@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper and Scissors</title>
+  <meta charset = "utf-8">
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function playerSelection(){
+      let answer =  prompt("Make your selection : Rock Paper or Scissors");
+      answer = answer.toLowerCase();
+      console.log(answer)
+      return answer;
+    };
+
+    function computerSelection(){
+        let selection = Math.floor(Math.random()*3);
+        if (selection == 0 ){
+          selection = "rock";
+          }else if (selection == 1){
+          selection = "paper";
+          }else if(selection == 2){
+          selection = "scissors";
+          };
+        return selection;
+    };
+
+    function reset(){
+      playerScore = 0 ;
+      computerScore = 0 ;
+      console.log(`The Computer\'s Score is ${computerScore}`)
+      console.log(`The Player\'s score is ${playerScore}`)
+    }
+    function keepPlaying(){
+      let bool = prompt('Would you like to continue? Yes or No')
+      bool = bool.toLowerCase()
+      return;
+    }
+
+    function playRound(){
+      let player = playerSelection();
+      let computer =computerSelection();
+      if ((computer == 'rock' && player == 'scissors') || (computer == 'paper' && player == 'rock') || (computer == 'scissors' && player == 'paper')){
+        computerScore += 1;
+        console.log(`You lose ${computer} beats ${player}`);
+        console.log(`The Computer's Score is ${computerScore}`)
+        console.log(`The Player\s score is ${playerScore}`)
+        if (computerScore == 5){
+          console.log("You have lost")
+          reset()
+        }
+      }else if (player == computer){
+        console.log('It\'s a tie')
+        console.log(`The Computer's Score is ${computerScore}`)
+        console.log(`The Player\s score is ${playerScore}`)
+      }else{
+        playerScore += 1;
+        console.log(`The Computer's Score is ${computerScore}`)
+        console.log(`The Player\s score is ${playerScore}`)
+        if (playerScore == 5){
+          console.log("You have won!")
+          reset()
+        }
+      }
+    };
+  </script>
+</body>
+</html>
